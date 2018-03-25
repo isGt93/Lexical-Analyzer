@@ -72,7 +72,33 @@ extern int yydebug;
     EQUALS = 282,
     GLOBAL_STATIC = 283,
     S_COMA = 284,
-    C_PRINT = 285
+    C_PRINT = 285,
+    W_CONSTANT = 286,
+    W_CONSTANT2 = 287,
+    S_OPARENTESIS = 288,
+    S_CPARENTESIS = 289,
+    W_IF = 290,
+    W_ELSEIF = 291,
+    W_ELSE = 292,
+    S_OBRACKETS = 293,
+    S_CBRACKETS = 294,
+    W_SWITCH = 295,
+    S_DOUBLEP = 296,
+    W_CASE = 297,
+    W_BREAK = 298,
+    W_DEFAULT = 299,
+    W_ENDSWITCH = 300,
+    W_ENDIF = 301,
+    W_ENDWHILE = 302,
+    W_WHILE = 303,
+    W_DO = 304,
+    W_FOR = 305,
+    W_ENDFOR = 306,
+    W_FOREACH = 307,
+    W_ENDFOREACH = 308,
+    S_FOREACH = 309,
+    W_AS = 310,
+    S_AND = 311
   };
 #endif
 /* Tokens.  */
@@ -104,6 +130,32 @@ extern int yydebug;
 #define GLOBAL_STATIC 283
 #define S_COMA 284
 #define C_PRINT 285
+#define W_CONSTANT 286
+#define W_CONSTANT2 287
+#define S_OPARENTESIS 288
+#define S_CPARENTESIS 289
+#define W_IF 290
+#define W_ELSEIF 291
+#define W_ELSE 292
+#define S_OBRACKETS 293
+#define S_CBRACKETS 294
+#define W_SWITCH 295
+#define S_DOUBLEP 296
+#define W_CASE 297
+#define W_BREAK 298
+#define W_DEFAULT 299
+#define W_ENDSWITCH 300
+#define W_ENDIF 301
+#define W_ENDWHILE 302
+#define W_WHILE 303
+#define W_DO 304
+#define W_FOR 305
+#define W_ENDFOR 306
+#define W_FOREACH 307
+#define W_ENDFOREACH 308
+#define S_FOREACH 309
+#define W_AS 310
+#define S_AND 311
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
@@ -112,9 +164,23 @@ typedef int YYSTYPE;
 # define YYSTYPE_IS_DECLARED 1
 #endif
 
+/* Location type.  */
+#if ! defined YYLTYPE && ! defined YYLTYPE_IS_DECLARED
+typedef struct YYLTYPE YYLTYPE;
+struct YYLTYPE
+{
+  int first_line;
+  int first_column;
+  int last_line;
+  int last_column;
+};
+# define YYLTYPE_IS_DECLARED 1
+# define YYLTYPE_IS_TRIVIAL 1
+#endif
+
 
 extern YYSTYPE yylval;
-
+extern YYLTYPE yylloc;
 int yyparse (void);
 
 #endif /* !YY_YY_Y_TAB_H_INCLUDED  */
