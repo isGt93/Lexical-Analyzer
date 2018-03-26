@@ -61,44 +61,53 @@ extern int yydebug;
     O_ASSIGNMENT = 271,
     O_INC_DEC = 272,
     O_LOGICAL = 273,
-    T_INTEGER = 274,
-    T_FLOAT = 275,
-    T_STRING = 276,
-    IDENTIFIER = 277,
-    S_QUOTES = 278,
-    T_BOOLEAN = 279,
-    T_NULL = 280,
-    ECHO = 281,
-    EQUALS = 282,
-    GLOBAL_STATIC = 283,
-    S_COMA = 284,
-    C_PRINT = 285,
-    W_CONSTANT = 286,
-    W_CONSTANT2 = 287,
-    S_OPARENTESIS = 288,
-    S_CPARENTESIS = 289,
-    W_IF = 290,
-    W_ELSEIF = 291,
-    W_ELSE = 292,
-    S_OBRACKETS = 293,
-    S_CBRACKETS = 294,
-    W_SWITCH = 295,
-    S_DOUBLEP = 296,
-    W_CASE = 297,
-    W_BREAK = 298,
-    W_DEFAULT = 299,
-    W_ENDSWITCH = 300,
-    W_ENDIF = 301,
-    W_ENDWHILE = 302,
-    W_WHILE = 303,
-    W_DO = 304,
-    W_FOR = 305,
-    W_ENDFOR = 306,
-    W_FOREACH = 307,
-    W_ENDFOREACH = 308,
-    S_FOREACH = 309,
-    W_AS = 310,
-    S_AND = 311
+    O_LOGICAL2 = 274,
+    T_INTEGER = 275,
+    T_FLOAT = 276,
+    T_STRING = 277,
+    IDENTIFIER = 278,
+    S_QUOTES = 279,
+    T_BOOLEAN = 280,
+    T_NULL = 281,
+    ECHO = 282,
+    EQUALS = 283,
+    GLOBAL_STATIC = 284,
+    S_COMA = 285,
+    C_PRINT = 286,
+    W_CONSTANT = 287,
+    W_CONSTANT2 = 288,
+    S_OPARENTESIS = 289,
+    S_CPARENTESIS = 290,
+    W_IF = 291,
+    W_ELSEIF = 292,
+    W_ELSE = 293,
+    S_OBRACKETS = 294,
+    S_CBRACKETS = 295,
+    S_OSBRACKETS = 296,
+    S_CSBRACKETS = 297,
+    W_SWITCH = 298,
+    S_DOUBLEP = 299,
+    W_CASE = 300,
+    W_BREAK = 301,
+    W_DEFAULT = 302,
+    W_ENDSWITCH = 303,
+    W_ENDIF = 304,
+    W_ENDWHILE = 305,
+    W_WHILE = 306,
+    W_DO = 307,
+    W_FOR = 308,
+    W_ENDFOR = 309,
+    W_FOREACH = 310,
+    W_ENDFOREACH = 311,
+    S_FOREACH = 312,
+    W_AS = 313,
+    S_AND = 314,
+    W_INCLUDE = 315,
+    W_CONTINUE = 316,
+    W_RETURN = 317,
+    W_FUNCTION = 318,
+    P_VARIABLE = 319,
+    DB_RECORDSET = 320
   };
 #endif
 /* Tokens.  */
@@ -118,44 +127,53 @@ extern int yydebug;
 #define O_ASSIGNMENT 271
 #define O_INC_DEC 272
 #define O_LOGICAL 273
-#define T_INTEGER 274
-#define T_FLOAT 275
-#define T_STRING 276
-#define IDENTIFIER 277
-#define S_QUOTES 278
-#define T_BOOLEAN 279
-#define T_NULL 280
-#define ECHO 281
-#define EQUALS 282
-#define GLOBAL_STATIC 283
-#define S_COMA 284
-#define C_PRINT 285
-#define W_CONSTANT 286
-#define W_CONSTANT2 287
-#define S_OPARENTESIS 288
-#define S_CPARENTESIS 289
-#define W_IF 290
-#define W_ELSEIF 291
-#define W_ELSE 292
-#define S_OBRACKETS 293
-#define S_CBRACKETS 294
-#define W_SWITCH 295
-#define S_DOUBLEP 296
-#define W_CASE 297
-#define W_BREAK 298
-#define W_DEFAULT 299
-#define W_ENDSWITCH 300
-#define W_ENDIF 301
-#define W_ENDWHILE 302
-#define W_WHILE 303
-#define W_DO 304
-#define W_FOR 305
-#define W_ENDFOR 306
-#define W_FOREACH 307
-#define W_ENDFOREACH 308
-#define S_FOREACH 309
-#define W_AS 310
-#define S_AND 311
+#define O_LOGICAL2 274
+#define T_INTEGER 275
+#define T_FLOAT 276
+#define T_STRING 277
+#define IDENTIFIER 278
+#define S_QUOTES 279
+#define T_BOOLEAN 280
+#define T_NULL 281
+#define ECHO 282
+#define EQUALS 283
+#define GLOBAL_STATIC 284
+#define S_COMA 285
+#define C_PRINT 286
+#define W_CONSTANT 287
+#define W_CONSTANT2 288
+#define S_OPARENTESIS 289
+#define S_CPARENTESIS 290
+#define W_IF 291
+#define W_ELSEIF 292
+#define W_ELSE 293
+#define S_OBRACKETS 294
+#define S_CBRACKETS 295
+#define S_OSBRACKETS 296
+#define S_CSBRACKETS 297
+#define W_SWITCH 298
+#define S_DOUBLEP 299
+#define W_CASE 300
+#define W_BREAK 301
+#define W_DEFAULT 302
+#define W_ENDSWITCH 303
+#define W_ENDIF 304
+#define W_ENDWHILE 305
+#define W_WHILE 306
+#define W_DO 307
+#define W_FOR 308
+#define W_ENDFOR 309
+#define W_FOREACH 310
+#define W_ENDFOREACH 311
+#define S_FOREACH 312
+#define W_AS 313
+#define S_AND 314
+#define W_INCLUDE 315
+#define W_CONTINUE 316
+#define W_RETURN 317
+#define W_FUNCTION 318
+#define P_VARIABLE 319
+#define DB_RECORDSET 320
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED

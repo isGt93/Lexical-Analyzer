@@ -5,14 +5,16 @@
 DIGIT [0-9]+
 LETTER[a-zA-Z]+
 %option yylineno
+%array yytext
 %option noinput nounput
 
 %%
-"<?php"							{printf("START"); return START;}
-"?>"							{printf("END"); return END;}
+"<?php"							{return START;}
+"?>"							{return END;}
 "//".*							{return S_COMMENT1;}
 "#".*							{return S_COMMENT2;}
 [/][*][^*]*[*]+([^*/][^*]*[*]+)*[/]			{return MULTILINE;}
+"$GLOBALS"|"$_SERVER"|"$_GET"|"$_POST"|"$_FILES"|"$_REQUEST"|"$_SESSION"|"$_ENV"|"$_COOKIE"|"$php_errormsg"|"$HTTP_RAW_POST_DATA"|"$http_response_header"|"$argc"|"$argv" {return P_VARIABLE;}
 "$"							{return S_VARIABLE;}
 "_"							{return S_UNDERSCORE;}
 ";"							{return S_SEMICOLON;}
@@ -22,6 +24,8 @@ LETTER[a-zA-Z]+
 ")"							{return S_CPARENTESIS;}
 "{"							{return S_OBRACKETS;}
 "}"							{return S_CBRACKETS;}
+"["							{return S_OSBRACKETS;}
+"]"							{return S_CSBRACKETS;}
 "."							{return O_CONCATENATION;}
 ".="							{return O_CONCATENATIONA;}
 "echo"							{return ECHO;}
@@ -47,19 +51,25 @@ LETTER[a-zA-Z]+
 "endforeach"						{return W_ENDFOREACH;}
 "=>"							{return S_FOREACH;}
 "as"							{return W_AS;}
-"__halt_compiler()"|"abstract"|"and"|"array()"|"as"|"callable"|"catch"|"class"|"clone"|"continue"|"declare"|"die()"|"empty()"|"enddeclare"|"eval()"|"exit()"|"extends"|"final"|"finally"|"function"|"goto"|"implements"|"include"|"include_once"|"instanceof"|"insteadof"|"interface"|"isset()"|"list()"|"namespace"|"new"|"or"|"private"|"protected"|"public"|"require"|"require_once"|"return"|"throw"|"trait"|"try"|"unset()"|"use"|"var"|"xor"|"yield" 			{printf("16");return W_RESERVED;}
+"include"|"require"					{return W_INCLUDE;}
+"continue"						{return W_CONTINUE;}	
+"return"						{return W_RETURN;}
+"function"						{return W_FUNCTION;}
+"recordset"						{return DB_RECORDSET;}
+"__halt_compiler()"|"abstract"|"and"|"array()"|"as"|"callable"|"catch"|"class"|"clone"|"declare"|"die()"|"empty()"|"enddeclare"|"eval()"|"exit()"|"extends"|"final"|"finally"|"function"|"goto"|"implements"|"include_once"|"instanceof"|"insteadof"|"interface"|"isset()"|"list()"|"namespace"|"new"|"or"|"private"|"protected"|"public"|"require_once"|"throw"|"trait"|"try"|"unset()"|"use"|"var"|"xor"|"yield" {return W_RESERVED;}
 "+"|"-"|"*"|"/"|"%"|"**"				{return O_ARITHMETIC;}
 "==="|"=="|"!="|"<>"|"!=="|"<"|">"|"<="|">="		{return O_COMPARISON;}
 "="							{return EQUALS;}
 "+="|"-="|"*="|"/="|"%="				{return O_ASSIGNMENT;}
 "++"|"--"						{return O_INC_DEC;}
-"and"|"or"|"xor"|"&&"|"\|\|"|"!"			{return O_LOGICAL;}
+"and"|"or"|"xor"|"&&"|"\|\|"				{return O_LOGICAL;}
+"!"							{return O_LOGICAL2;}
 "&"							{return S_AND;}
 {DIGIT}+						{return T_INTEGER;}
 {DIGIT}+\.{DIGIT}+					{return T_FLOAT;}
 "true"|"false"						{return T_BOOLEAN;}
 "null"							{return T_NULL;}
-\"(\\.|[^"\\])*\"					{return T_STRING;}
+\"(\\.|[^"\\])*\"|\'(\\.|[^"\\])*\'			{return T_STRING;}
 ({LETTER}|"_")({LETTER}|{DIGIT}|"_")*			{return IDENTIFIER;}
 [ \t\n]							;
 %%
