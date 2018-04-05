@@ -50,64 +50,56 @@ extern int yydebug;
     S_COMMENT1 = 260,
     S_COMMENT2 = 261,
     MULTILINE = 262,
-    S_VARIABLE = 263,
-    S_UNDERSCORE = 264,
-    S_SEMICOLON = 265,
-    O_CONCATENATION = 266,
-    O_CONCATENATIONA = 267,
-    W_RESERVED = 268,
-    O_ARITHMETIC = 269,
-    O_COMPARISON = 270,
-    O_ASSIGNMENT = 271,
-    O_INC_DEC = 272,
-    O_LOGICAL = 273,
-    O_LOGICAL2 = 274,
-    T_INTEGER = 275,
-    T_FLOAT = 276,
-    T_STRING = 277,
-    IDENTIFIER = 278,
-    S_QUOTES = 279,
-    T_BOOLEAN = 280,
-    T_NULL = 281,
-    ECHO = 282,
-    EQUALS = 283,
-    GLOBAL_STATIC = 284,
-    S_COMA = 285,
-    C_PRINT = 286,
-    W_CONSTANT = 287,
-    W_CONSTANT2 = 288,
-    S_OPARENTESIS = 289,
-    S_CPARENTESIS = 290,
-    W_IF = 291,
-    W_ELSEIF = 292,
-    W_ELSE = 293,
-    S_OBRACKETS = 294,
-    S_CBRACKETS = 295,
-    S_OSBRACKETS = 296,
-    S_CSBRACKETS = 297,
-    W_SWITCH = 298,
-    S_DOUBLEP = 299,
-    W_CASE = 300,
-    W_BREAK = 301,
-    W_DEFAULT = 302,
-    W_ENDSWITCH = 303,
-    W_ENDIF = 304,
-    W_ENDWHILE = 305,
-    W_WHILE = 306,
-    W_DO = 307,
-    W_FOR = 308,
-    W_ENDFOR = 309,
-    W_FOREACH = 310,
-    W_ENDFOREACH = 311,
-    S_FOREACH = 312,
-    W_AS = 313,
-    S_AND = 314,
-    W_INCLUDE = 315,
-    W_CONTINUE = 316,
-    W_RETURN = 317,
-    W_FUNCTION = 318,
-    P_VARIABLE = 319,
-    DB_RECORDSET = 320
+    P_VARIABLE = 263,
+    W_RESERVED = 264,
+    S_VARIABLE = 265,
+    S_UNDERSCORE = 266,
+    S_SEMICOLON = 267,
+    S_COMA = 268,
+    S_DOUBLEP = 269,
+    S_PARENTESIS = 270,
+    S_BRACKETS = 271,
+    S_SBRACKETS = 272,
+    O_CONCATENATION = 273,
+    O_CONCATENATIONA = 274,
+    W_CONSTANT = 275,
+    W_CONSTANT2 = 276,
+    W_IF = 277,
+    W_ELSEIF = 278,
+    W_ELSE = 279,
+    W_SWITCH = 280,
+    W_CASE = 281,
+    W_BREAK = 282,
+    W_ENDSWITCH = 283,
+    W_ENDIF = 284,
+    W_WHILE = 285,
+    W_ENDWHILE = 286,
+    W_DO = 287,
+    W_FOR = 288,
+    W_ENDFOR = 289,
+    W_FOREACH = 290,
+    W_ENDFOREACH = 291,
+    S_FOREACH = 292,
+    W_INCLUDE = 293,
+    W_CONTINUE = 294,
+    W_RETURN = 295,
+    O_COMPARISON = 296,
+    EQUALS = 297,
+    O_ASSIGNMENT = 298,
+    O_INC_DEC = 299,
+    O_ARITHMETIC = 300,
+    O_LOGICAL = 301,
+    O_LOGICAL2 = 302,
+    T_INTEGER = 303,
+    T_FLOAT = 304,
+    T_BOOLEAN = 305,
+    T_NULL = 306,
+    T_STRING = 307,
+    IDENTIFIER = 308,
+    DATABASE = 309,
+    P_VARIABLE2 = 310,
+    S_INTERROGATION = 311,
+    SYMBOLS = 312
   };
 #endif
 /* Tokens.  */
@@ -116,68 +108,70 @@ extern int yydebug;
 #define S_COMMENT1 260
 #define S_COMMENT2 261
 #define MULTILINE 262
-#define S_VARIABLE 263
-#define S_UNDERSCORE 264
-#define S_SEMICOLON 265
-#define O_CONCATENATION 266
-#define O_CONCATENATIONA 267
-#define W_RESERVED 268
-#define O_ARITHMETIC 269
-#define O_COMPARISON 270
-#define O_ASSIGNMENT 271
-#define O_INC_DEC 272
-#define O_LOGICAL 273
-#define O_LOGICAL2 274
-#define T_INTEGER 275
-#define T_FLOAT 276
-#define T_STRING 277
-#define IDENTIFIER 278
-#define S_QUOTES 279
-#define T_BOOLEAN 280
-#define T_NULL 281
-#define ECHO 282
-#define EQUALS 283
-#define GLOBAL_STATIC 284
-#define S_COMA 285
-#define C_PRINT 286
-#define W_CONSTANT 287
-#define W_CONSTANT2 288
-#define S_OPARENTESIS 289
-#define S_CPARENTESIS 290
-#define W_IF 291
-#define W_ELSEIF 292
-#define W_ELSE 293
-#define S_OBRACKETS 294
-#define S_CBRACKETS 295
-#define S_OSBRACKETS 296
-#define S_CSBRACKETS 297
-#define W_SWITCH 298
-#define S_DOUBLEP 299
-#define W_CASE 300
-#define W_BREAK 301
-#define W_DEFAULT 302
-#define W_ENDSWITCH 303
-#define W_ENDIF 304
-#define W_ENDWHILE 305
-#define W_WHILE 306
-#define W_DO 307
-#define W_FOR 308
-#define W_ENDFOR 309
-#define W_FOREACH 310
-#define W_ENDFOREACH 311
-#define S_FOREACH 312
-#define W_AS 313
-#define S_AND 314
-#define W_INCLUDE 315
-#define W_CONTINUE 316
-#define W_RETURN 317
-#define W_FUNCTION 318
-#define P_VARIABLE 319
-#define DB_RECORDSET 320
+#define P_VARIABLE 263
+#define W_RESERVED 264
+#define S_VARIABLE 265
+#define S_UNDERSCORE 266
+#define S_SEMICOLON 267
+#define S_COMA 268
+#define S_DOUBLEP 269
+#define S_PARENTESIS 270
+#define S_BRACKETS 271
+#define S_SBRACKETS 272
+#define O_CONCATENATION 273
+#define O_CONCATENATIONA 274
+#define W_CONSTANT 275
+#define W_CONSTANT2 276
+#define W_IF 277
+#define W_ELSEIF 278
+#define W_ELSE 279
+#define W_SWITCH 280
+#define W_CASE 281
+#define W_BREAK 282
+#define W_ENDSWITCH 283
+#define W_ENDIF 284
+#define W_WHILE 285
+#define W_ENDWHILE 286
+#define W_DO 287
+#define W_FOR 288
+#define W_ENDFOR 289
+#define W_FOREACH 290
+#define W_ENDFOREACH 291
+#define S_FOREACH 292
+#define W_INCLUDE 293
+#define W_CONTINUE 294
+#define W_RETURN 295
+#define O_COMPARISON 296
+#define EQUALS 297
+#define O_ASSIGNMENT 298
+#define O_INC_DEC 299
+#define O_ARITHMETIC 300
+#define O_LOGICAL 301
+#define O_LOGICAL2 302
+#define T_INTEGER 303
+#define T_FLOAT 304
+#define T_BOOLEAN 305
+#define T_NULL 306
+#define T_STRING 307
+#define IDENTIFIER 308
+#define DATABASE 309
+#define P_VARIABLE2 310
+#define S_INTERROGATION 311
+#define SYMBOLS 312
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
-typedef int YYSTYPE;
+
+union YYSTYPE
+{
+#line 66 "lexicalAnalyzer.y" /* yacc.c:1909  */
+
+	char *str;
+
+#line 172 "y.tab.h" /* yacc.c:1909  */
+};
+
+typedef union YYSTYPE YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define YYSTYPE_IS_DECLARED 1
 #endif
