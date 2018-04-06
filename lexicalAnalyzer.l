@@ -61,6 +61,9 @@ LETTER[a-zA-Z]+
 "and"|"or"|"xor"|"&&"|"\|\|"				{ECHO; return O_LOGICAL;}
 "!"							{ECHO; return O_LOGICAL2;}
 "&"|"\|"|"^"|"<<"|">>"					{ECHO; return SYMBOLS;}
+0[xX][0-9a-fA-F]+					{ECHO; return HEXA;}
+0[bB][01]+						{ECHO; return BINARY;}
+({DIGIT}+|{DIGIT}+\.{DIGIT}+)"$"({LETTER}|"_")({LETTER}|{DIGIT}|"_")*	{return yytext[0];}
 {DIGIT}+						{ECHO; return T_INTEGER;}
 {DIGIT}+\.{DIGIT}+					{ECHO; return T_FLOAT;}
 "true"|"false"						{for(int i=0; yytext[i]; i++){yytext[i]=tolower(yytext[i]);} ECHO; return T_BOOLEAN;}

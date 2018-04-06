@@ -63,6 +63,8 @@
 %token S_INTERROGATION
 %token SYMBOLS
 %token CONSTANTS
+%token HEXA
+%token BINARY
 
 %union{
 	char *str;
@@ -186,7 +188,11 @@
 		| SYMBOLS
 		| SYMBOLS CONTENT
 		| CONSTANTS
-		| CONSTANTS CONTENT;
+		| CONSTANTS CONTENT
+		| HEXA
+		| HEXA CONTENT
+		| BINARY
+		| BINARY CONTENT;
 
 %%
 
