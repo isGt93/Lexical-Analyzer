@@ -52,7 +52,7 @@ LETTER[a-zA-Z]+
 "include"|"require"					{for(int i=0; yytext[i]; i++){yytext[i]=tolower(yytext[i]);} ECHO; return W_INCLUDE;}
 "continue"						{for(int i=0; yytext[i]; i++){yytext[i]=tolower(yytext[i]);} ECHO; return W_CONTINUE;}	
 "return"						{for(int i=0; yytext[i]; i++){yytext[i]=tolower(yytext[i]);} ECHO; return W_RETURN;}
-"$recordset["('([^'\n\\]|\\.)*')|(\"([^?"\n\\]|\\.)*\")"]" {for(int i=11; yytext[i]; i++){yytext[i]=toupper(yytext[i]);} ECHO; return DATABASE;}
+('([^'\n\\]|\\.)*')|(\"([^?"\n\\]|\\.)*\") 		{for(int i=0; yytext[i]; i++){yytext[i]=toupper(yytext[i]);} ECHO; return DATABASE;}
 "==="|"=="|"!="|"<>"|"!=="|"<"|">"|"<="|">="		{ECHO; return O_COMPARISON;}
 "="							{ECHO; return EQUALS;}
 "+="|"-="|"*="|"/="|"%="				{ECHO; return O_ASSIGNMENT;}
@@ -61,14 +61,15 @@ LETTER[a-zA-Z]+
 "and"|"or"|"xor"|"&&"|"\|\|"				{ECHO; return O_LOGICAL;}
 "!"							{ECHO; return O_LOGICAL2;}
 "&"|"\|"|"^"|"<<"|">>"					{ECHO; return SYMBOLS;}
-0[xX][0-9a-fA-F]+					{ECHO; return HEXA;}
+0[xX][0-9a-fA-F]+|"9pt"					{ECHO; return HEXA;}
 0[bB][01]+						{ECHO; return BINARY;}
+{DIGIT}+{LETTER}+|"=!="					{return yytext[0];}
 ({DIGIT}+|{DIGIT}+\.{DIGIT}+)"$"({LETTER}|"_")({LETTER}|{DIGIT}|"_")*	{return yytext[0];}
 {DIGIT}+						{ECHO; return T_INTEGER;}
 {DIGIT}+\.{DIGIT}+					{ECHO; return T_FLOAT;}
 "true"|"false"						{for(int i=0; yytext[i]; i++){yytext[i]=tolower(yytext[i]);} ECHO; return T_BOOLEAN;}
 "null"							{for(int i=0; yytext[i]; i++){yytext[i]=tolower(yytext[i]);} ECHO; return T_NULL;}
-('([^'\n\\]|\\.)*')|(\"([^?"\n\\]|\\.)*\")		{ECHO; return T_STRING;}
+('([^'\\]|\\.)*')|(\"([^?"\\]|\\.)*\")			{ECHO; return T_STRING;}
 ({LETTER}|"_")({LETTER}|{DIGIT}|"_")*			{ECHO; return IDENTIFIER;}
 [ \t\n]+						{ECHO;}
 \n|\r\n|""|\t|\s					{ECHO;}
