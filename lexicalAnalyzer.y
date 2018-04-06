@@ -62,6 +62,7 @@
 %token P_VARIABLE2
 %token S_INTERROGATION
 %token SYMBOLS
+%token CONSTANTS
 
 %union{
 	char *str;
@@ -183,7 +184,9 @@
 		| S_INTERROGATION
 		| S_INTERROGATION CONTENT
 		| SYMBOLS
-		| SYMBOLS CONTENT;
+		| SYMBOLS CONTENT
+		| CONSTANTS
+		| CONSTANTS CONTENT;
 
 %%
 
@@ -203,11 +206,13 @@ int main(int argc, char *argv[])
 
 	if(yyparse()==0 && counter==0)
 	{
-		printf("\nAnalisis concluded.\n");
+		printf("\nAnalisis concluded. The file does belongs to the PHP Lenguage.\n");
 	}
 	else
 	{
 		printf("\nThe input file has some errors, they are stated in the file error.out\n");
+		//Opcional, si se elimina creara el archivo sin los errores.
+		remove(name);
 	}
 
 	fclose(yyout);

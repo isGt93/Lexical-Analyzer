@@ -99,7 +99,8 @@ extern int yydebug;
     DATABASE = 309,
     P_VARIABLE2 = 310,
     S_INTERROGATION = 311,
-    SYMBOLS = 312
+    SYMBOLS = 312,
+    CONSTANTS = 313
   };
 #endif
 /* Tokens.  */
@@ -158,17 +159,18 @@ extern int yydebug;
 #define P_VARIABLE2 310
 #define S_INTERROGATION 311
 #define SYMBOLS 312
+#define CONSTANTS 313
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 
 union YYSTYPE
 {
-#line 66 "lexicalAnalyzer.y" /* yacc.c:1909  */
+#line 67 "lexicalAnalyzer.y" /* yacc.c:1909  */
 
 	char *str;
 
-#line 172 "y.tab.h" /* yacc.c:1909  */
+#line 174 "y.tab.h" /* yacc.c:1909  */
 };
 
 typedef union YYSTYPE YYSTYPE;

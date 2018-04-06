@@ -1,0 +1,56 @@
+"//".*															COMMENT //
+"#".*															COMMENT #
+[/][*][^*]*[*]+([^*/][^*]*[*]+)*[/]											MULTILINE COMMENT
+(__)(LINE|FILE|DIR|FUNCTION|CLASS|TRAIT|METHOD|NAMESPACE)(__)								CONSTANTS
+"$GLOBALS"|"$_SERVER"|"$_GET"|"$_POST"|"$_FILES"|"$_REQUEST"|"$_SESSION"|"$_ENV"|"$_COOKIE"|"$HTTP_RAW_POST_DATA"	PREDETERMINED VARIABLE
+"$php_errormsg"|"$http_response_header"|"$argc"|"$argv"									PREDETERMINED VARIABLE 
+"$"({LETTER}|"_")({LETTER}|{DIGIT}|"_")*										VARIABLES
+"$recordset["('([^'\n\\]|\\.)*')|(\"([^?"\n\\]|\\.)*\")"]"								DATABASE
+"_"															UNDERSCORE
+";"															SEMICOLON
+","															COMA
+":"															DOUBLEP
+"("|")"															PARENTESIS
+"{"|"}"															BRACKETS
+"["|"]"															SBRACKETS
+"."															CONCATENATION
+".="															CONCATENATIONA
+"?"															INTERROGATION
+"define"														CONSTANT
+"const"															CONSTANT2
+"if"															IF
+"elseif"														ELSEIF
+"else"															ELSE
+"switch"														SWITCH
+"case"															CASE
+"break"															BREAK
+"endswitch"														ENDSWITCH
+"endif"															ENDIF
+"while"															WHILE
+"endwhile"														ENDWHILE
+"do"															DO
+"for"															FOR
+"endfor"														ENDFOR
+"foreach"														FOREACH
+"endforeach"														ENDFOREACH
+"=>"															FOREACH
+"include"|"require"													INCLUDE
+"continue"														CONTINUE	
+"return"														RETURN
+"$recordset["('([^'\n\\]|\\.)*')|(\"([^?"\n\\]|\\.)*\")"]" 								DATABASE
+"==="|"=="|"!="|"<>"|"!=="|"<"|">"|"<="|">="										COMPARISON
+"="															EQUALS
+"+="|"-="|"*="|"/="|"%="												ASSIGNMENT
+"++"|"--"														INC_DEC
+"+"|"-"|"*"|"/"|"%"|"**"												ARITHMETIC
+"and"|"or"|"xor"|"&&"|"\|\|"												LOGICAL
+"!"															LOGICAL2
+"&"|"\|"|"^"|"<<"|">>"													SYMBOLS
+{DIGIT}+														INTEGER
+{DIGIT}+\.{DIGIT}+													FLOAT
+"true"|"false"														BOOLEAN
+"null"															NULL
+('([^'\n\\]|\\.)*')|(\"([^?"\n\\]|\\.)*\")										STRING
+({LETTER}|"_")({LETTER}|{DIGIT}|"_")*											IDENTIFIER
+[ \t\n]+														BLANK SPACE
+\n|\r\n|""|\t|\s													BLANK SPACE

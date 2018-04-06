@@ -16,6 +16,7 @@ LETTER[a-zA-Z]+
 "//".*							{ECHO; return S_COMMENT1;}
 "#".*							{ECHO; return S_COMMENT2;}
 [/][*][^*]*[*]+([^*/][^*]*[*]+)*[/]			{ECHO; return MULTILINE;}
+(__)(LINE|FILE|DIR|FUNCTION|CLASS|TRAIT|METHOD|NAMESPACE)(__)	{ECHO; return CONSTANTS;}
 "$GLOBALS"|"$_SERVER"|"$_GET"|"$_POST"|"$_FILES"|"$_REQUEST"|"$_SESSION"|"$_ENV"|"$_COOKIE"|"$HTTP_RAW_POST_DATA" {for(int i=0; yytext[i]; i++){yytext[i]=toupper(yytext[i]);} ECHO; return P_VARIABLE;}
 "$php_errormsg"|"$http_response_header"|"$argc"|"$argv" {for(int i=0; yytext[i]; i++){yytext[i]=tolower(yytext[i]);} ECHO; return P_VARIABLE2;}
 "function"|"as"|"default"|"global"|"static"|"print"|"echo"|"__halt_compiler()"|"abstract"|"and"|"array()"|"as"|"callable"|"catch"|"class"|"clone"|"declare"|"die()"|"empty()"|"enddeclare"|"eval()"|"exit()"|"extends"|"final"|"finally"|"function"|"goto"|"implements"|"include_once"|"instanceof"|"insteadof"|"interface"|"isset()"|"list()"|"namespace"|"new"|"or"|"private"|"protected"|"public"|"require_once"|"throw"|"trait"|"try"|"unset()"|"use"|"var"|"xor"|"yield" {for(int i=0; yytext[i]; i++){yytext[i]=tolower(yytext[i]);} ECHO; return W_RESERVED;}
